@@ -1,10 +1,26 @@
 import sys
 def complex_cipher():
+    correct=0
     strr=str(input('Enter the message you want encoded (numbers will not be encrypted): '))
-    key= int(input('enter your encrytion key: '))
+    try:
+        key=int(sys.argv[1])
+    except:
+        pass
+    try:
+        keyr+=1
+        keyr-=1
+    except:
+        while correct == 0:
+            try:
+                key= int(input('enter your encrytion key: '))
+                correct=1
+            except:
+                pass
     cypt=[]
     final=''
     separ =input ('what would you like for non letters to be represented by: ')
+    if separ == 'None':
+        separ=' '
     for char in strr:
         if ord(char)<65 or (ord(char)>90 and ord(char)<96):
             try: 
@@ -18,7 +34,11 @@ def complex_cipher():
 
             if (ord(char)+key)>90:
 
-                cypt.append(chr((ord(char))+key-26))
+                tabs=(ord(char)+key)
+                while tabs>90:
+                    tabs-=26
+                cypt.append(chr(tabs))
+                
 
             else:
 
@@ -37,11 +57,26 @@ def complex_cipher():
     
     return final
 
-# for nu in range(97,123):
-# #     print(chr(nu))
+
+
 def simple_cipher():
     strrr=str(input('Enter the message you want encoded: '))
-    keyr= int(input('enter your encrytion key: '))
+    correct=0
+    try:
+        keyr=int(sys.argv[1])
+    except:
+        pass
+    try:
+        keyr+=1
+        keyr-=1
+    except:
+        while correct == 0:
+            try:
+                keyr= int(input('enter your encrytion key: '))
+                correct=1
+            except:
+                pass
+    
     cyptr=[]
     finalr=''
     strrr=strrr.upper()
@@ -49,8 +84,10 @@ def simple_cipher():
     for char in strrr:
         
         if (ord(char)+keyr)>90:
-
-            cyptr.append(chr((ord(char))+keyr-26))
+            tabs=(ord(char)+keyr)
+            while tabs>90:
+                tabs-=26
+            cyptr.append(chr(tabs))
         elif (ord(char))>90 or (ord(char))<65:
             continue
         else:
@@ -67,3 +104,5 @@ def simple_cipher():
     return finalr
 
 print(simple_cipher())
+"i also made a cipher that is case sensitive"
+# print(complex_cipher())
