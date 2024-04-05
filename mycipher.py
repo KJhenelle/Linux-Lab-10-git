@@ -19,7 +19,7 @@ def complex_cipher():
     cypt=[]
     final=''
     separ =input ('what would you like for non letters to be represented by: ')
-    if separ == 'None':
+    if separ == '':
         separ=' '
     for char in strr:
         if ord(char)<65 or (ord(char)>90 and ord(char)<96):
@@ -52,8 +52,16 @@ def complex_cipher():
             else:
                 # print (char)
                 cypt.append(chr((ord(char))+key))
+    spa=0
     for i in cypt:
-        final+=i
+        if spa==5:
+            final+=separ
+            final+=i
+            spa=0
+        else:
+            final+=i
+            spa+=1
+        
     
     return final
 
@@ -104,5 +112,5 @@ def simple_cipher():
     return finalr
 
 print(simple_cipher())
-"i also made a cipher that is case sensitive"
-# print(complex_cipher())
+print("i also made a cipher that is case sensitive")
+print(complex_cipher())
